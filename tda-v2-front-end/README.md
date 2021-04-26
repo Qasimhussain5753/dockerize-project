@@ -1,7 +1,7 @@
 # Next.js project
 ![Next,js](https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg)
 
-# Install Dependencies 
+# Installation
 > npm install
 
 # Start project
