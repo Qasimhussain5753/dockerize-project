@@ -1,7 +1,7 @@
 # Dockerize-project
 ![Docker image](https://d1q6f0aelx0por.cloudfront.net/product-logos/library-docker-logo.png)
 
-# git `clone` 
+# `clone` 
 ```git
 git clone https://github.com/Qasimhussain5753/dockerize-project.git
 ```
