@@ -1,0 +1,21 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: courseregister-deploy
+  labels:
+    app: courseregister-app
+  annotations:
+  spec:
+    selector:
+      matchlabels:
+        app: courseregister-app
+      replicas: 2
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavaiable: 0
+        template:
+          containers:
+            - name: courseregister-app
+

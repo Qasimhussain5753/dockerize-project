@@ -1,0 +1,81 @@
+version: '3'
+services:
+  tda-v2-front-end:
+    build:
+      context: tda-v2-front-end
+      dockerfile: Dockerfile
+    volumes:
+      - ./tda
+    ports:
+      - "5000:5000"
+    container_name: tda-v2-front-end
+  nestjs:
+    build:
+      context: course-management
+      dockerfile: Dockerfile
+    image: tusharchy/nest-and-postgres-application:latest
+    env_file:
+      - .env
+#    environment:
+#      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+#      - POSTGRES_PASS=${POSTGRES_PASSWORD:-secret}
+#      - APP_PORT=${APP_PORT:-7000}
+    ports:
+      - "7000:7000"
+    container_name: courseregister
+    depends_on:
+      - postgres
+    volumes:
+      - ./course-management:/course-management
+      - /app/node_modules
+  postgres:
+    container_name: pg1
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
+      PGDATA: /pgdata
+    volumes:
+      - /pgdata:/pgdata
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    env_file:
+      - .env-pgadmin
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@gmail.com}
+#      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+#      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-8080}:8080"
+    networks:
+      - postgres
+    restart: unless-stopped
+  keycloak:
+    image: quay.io/keycloak/keycloak:12.0.4
+    environment:
+      KEYCLOAK_USER: ${KEYCLOAK_USER:-admin}
+      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD:-admin}
+    ports:
+      - 8081:8081
+    depends_on:
+      - postgres
+
+
+# networking
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  postgres:
+  pgadmin:
+
+
+
