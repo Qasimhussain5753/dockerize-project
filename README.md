@@ -8,7 +8,7 @@ git clone https://github.com/Qasimhussain5753/dockerize-project.git
 ```
 cd dockerize-project
  ```
-# Run `Docker-compose`
+# Run `Docker-compose` file
 ```
 docker-compose build
 ```
