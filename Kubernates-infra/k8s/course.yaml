@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: course
-spec:
-  containers:
-    - name: course
-      image: course-management/course:0.0.1
-      
