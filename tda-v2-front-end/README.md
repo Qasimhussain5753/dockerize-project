@@ -6,5 +6,5 @@
 
 # Start project
 > npm run start:dev
-# OR
+# OR 
 > yarn start:dev
