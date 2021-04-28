@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-deployement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course
+  template:
+    metadata:
+      labels:
+        app: course
+    spec:
+      containers:
+        - name: course
+          image: course-management/course
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: course-clustorip-service
+spec:
+  selector:
+    app: course
+  ports:
+    - name: course
+      protocol: TCP
+      port: 7000
+      targetPort: 7000
