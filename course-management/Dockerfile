@@ -15,6 +15,5 @@ RUN npm install -g concurrently
 # Copy current directory to APP folder
 COPY . /course-management
 
-EXPOSE 3000
-EXPOSE 3001
+EXPOSE 7000
 CMD ["concurrently","npm:start:dev", "npm:listen"]

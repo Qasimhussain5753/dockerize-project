@@ -6,15 +6,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tda-front
+      app: tda-front-end
   template:
     metadata:
       labels:
-        app: tda-front
+        app: tda-front-end
     spec:
       containers:
         - name: tda-front
-          image: nextjs/tda-front
+          image: helloworld:v1
+          imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
@@ -22,11 +23,13 @@ metadata:
   name: tda-front-service
 spec:
   selector:
-    app: tda-front
+    app: tda-front-end
   ports:
     - name: tda-front
       protocol: TCP
       port: 5000
-      targetPort: 5000
+      nodePort: 30090
+  type: NodePort
+#      targetPort: 5000
 
 

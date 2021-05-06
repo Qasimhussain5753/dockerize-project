@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coursedeployementv2
+  labels:
+    course-label: course-management-label
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course-project
+  template:
+    metadata:
+      labels:
+        app: course-project
+    spec:
+      containers:
+        - name: courseregister
+          image: course-student-management:v1
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: course-service-v1
+spec:
+  selector:
+    app: course-project
+    course-label: course-management-label
+  ports:
+    - name: course
+      protocol: TCP
+      port: 7000
+      nodePort: 30080
+  type: NodePort
+#      targetPort: 5000
+
+

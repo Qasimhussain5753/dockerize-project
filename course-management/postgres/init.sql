@@ -1,6 +1,0 @@
-CREATE USER postgres;
-CREATE DATABASE courses;
-CREATE DATABASE student;
-CREATE DATABASE register;
--- CREATE DATABASE tododb;
--- GRANT ALL PRIVILEGES ON DATABASE postgres TO tododb;
