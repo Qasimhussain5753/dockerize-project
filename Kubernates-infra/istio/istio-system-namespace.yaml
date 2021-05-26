@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2021-05-07T18:14:48Z"
+  labels:
+    istio-injection: disabled
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:istio-injection: {}
+        f:status:
+          f:phase: {}
+      manager: istioctl.exe
+      operation: Update
+      time: "2021-05-07T18:14:48Z"
+  name: istio-system
+  resourceVersion: "1734"
+  uid: 289ddc91-62ad-49fb-8240-ed4165fda968
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active

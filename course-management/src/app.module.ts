@@ -10,14 +10,23 @@ import { HttpErrors } from './shared/http.errors';
 import { RegisterModule } from './register/register.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
+import { UserModule } from './user/user.module';
+import { AdminModule } from './admin/admin.module';
 @Module({
   imports: [
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot(config),
     CoursesModule,
     StudentModule,
     RegisterModule,
     AuthenticationModule,
+    UserModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [

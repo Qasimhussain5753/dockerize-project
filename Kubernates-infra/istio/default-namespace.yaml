@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2021-05-07T17:43:47Z"
+  labels:
+    istio-injection: enabled
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:phase: {}
+      manager: kube-apiserver
+      operation: Update
+      time: "2021-05-07T17:43:47Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:istio-injection: {}
+      manager: kb.exe
+      operation: Update
+      time: "2021-05-07T18:14:17Z"
+  name: default
+  resourceVersion: "1711"
+  uid: 40a89130-69cd-43a9-a898-592083597462
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active

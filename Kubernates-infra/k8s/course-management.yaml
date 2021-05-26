@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: courseregister
-          image: course-student-management:v1
+          image: course-student-management:v2
           imagePullPolicy: Never
 ---
 apiVersion: v1
